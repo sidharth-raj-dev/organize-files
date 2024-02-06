@@ -16,7 +16,10 @@ for item in "${items[@]}"; do
         fi
         
         # move the file to that folder (in its respective file type extension)
-        mv "$item" "$ext/"
+        # but ignore the script file itself
+        if [[ $item != "organize-files.sh" ]]; then
+            mv "$item" "$ext/"
+        fi
     elif [[ -d $item ]]; then
         # check if the current directory has a folder named "collection"
         if [[ ! -d "collection" ]]; then
