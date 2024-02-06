@@ -1,14 +1,13 @@
 #!/bin/bash
 
-# read files in current directory, ignore the directories / folders
-files=(*)
+# read files and directories in current directory
+items=(*)
 
-for file in "${files[@]}"; do
-    # check if it's a file and not a directory
-    if [[ -f $file ]]; then
+for item in "${items[@]}"; do
+    # check if it's a file
+    if [[ -f $item ]]; then
         # get the extension of file
-        # store the extension in a var
-        ext="${file##*.}"
+        ext="${item##*.}"
         
         # check if the current directory has a folder named (extension-of-current-file)
         if [[ ! -d $ext ]]; then
@@ -17,6 +16,15 @@ for file in "${files[@]}"; do
         fi
         
         # move the file to that folder (in its respective file type extension)
-        mv "$file" "$ext/"
+        mv "$item" "$ext/"
+    elif [[ -d $item ]]; then
+        # check if the current directory has a folder named "collection"
+        if [[ ! -d "collection" ]]; then
+            # If not, make the folder
+            mkdir "collection"
+        fi
+
+        # move the directory to the "collection" folder
+        mv "$item" "collection/"
     fi
 done
