@@ -30,9 +30,9 @@ for item in items:
         
         # Move the file to that folder (in its respective file type extension)
         # but ignore the script file itself
-        if item != "organize-files.py":
+        if item != "organize-files.py" or item != "config.json":
             os.rename(item, os.path.join(ext, item))
-    elif os.path.isdir(item):
+    elif os.path.isdir(item) and item != "collection":
         # Check if the current directory has a folder named "collection"
         if not os.path.exists("collection"):
             # If not, make the folder
