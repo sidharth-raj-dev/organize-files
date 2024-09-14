@@ -16,6 +16,16 @@
         "sh",
         "svg",
         "txt",
-        "zip"
+        "zip",
+        "json",
+        "lnk",
+        "webp",
+        "mkv",
+        "7z",
+        "webm",
+        "JPG",
+        "excalidraw",
+        "jpeg",
+        "apk"
     ]
 }
